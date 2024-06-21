@@ -1,10 +1,16 @@
-type Props = {
+import { Tarea } from "./Tarea"
+
+type ListaTareas = {
     listaTareas: string[],
     borrarTarea: (index:number) => void
 }
 
-const ListaTareas = (props: Props) => {
+export const ListaTareas = ({listaTareas, borrarTarea}: ListaTareas) => {
   return (
-    <div>ListaTareas</div>
+    <div className="taskList">
+        {listaTareas.map((tarea, index) => (
+            <Tarea key={index} tarea={tarea} borrarTarea={() => borrarTarea(index)}></Tarea>
+        ))}
+    </div>
   )
 }
